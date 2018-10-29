@@ -1,3 +1,33 @@
-page-home {
 
+page-home {
+    ion-content.content, ion-content.content-md {
+        background-color: $violeta;
+        ion-grid {
+            ion-row{
+                ion-col{
+                    padding-top: 64px;                
+                    
+                    ion-item, ion-item.item-md{
+                        background-color: transparent;
+                        .text-input-md{
+                            margin: 0;
+                            color: white;
+                        }
+                        .text-input-md::placeholder{
+                            color: $naranja;
+                        }
+                        padding-left: 0;
+                        
+                    }
+                }
+            }
+        }
+            ion-img{
+                background-color: transparent;
+            }
+    }
+        ion-footer{
+            padding: 0 24px 24px 24px;
+        }
 }
+

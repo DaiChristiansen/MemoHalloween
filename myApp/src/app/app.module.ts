@@ -6,11 +6,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { EndGamePage } from '../pages/end-game/end-game';
+
+// components
+import { WinMessageComponent } from '../components/win-message/win-message';
+import { LoseMessageComponent } from '../components/lose-message/lose-message';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    EndGamePage,
+    WinMessageComponent,
+    LoseMessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +27,10 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    EndGamePage,
+    WinMessageComponent,
+    LoseMessageComponent,
   ],
   providers: [
     StatusBar,
