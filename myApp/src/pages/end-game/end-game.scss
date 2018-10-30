@@ -3,12 +3,18 @@ page-end-game {
     ion-content.content, ion-content.content-md {
         
         background-color: $violeta;    
-
-        ion-img{
-            background-color: transparent;
-            width: 238px;
-            height: auto;
+        ion-grid {
+            height: 100%;
+            ion-row {
+                height: 100%;
+                ion-img{
+                    background-color: transparent;
+                    width: 238px;
+                    height: auto;
+                }
+            }
         }
+        
 
     }
 

@@ -2,15 +2,31 @@ page-game {
     ion-content.content, ion-content.content-md {
         background-color: $violeta;
         ion-grid{
-
+            height: 100%;
             ion-row{
+                height: 100%;
                 &#header{
                     height: 36px;
+                    margin-bottom: 16px;
+                    .vidas{
+                        height: 26px;
+                        padding-left: 6px;
+                    }
                 }
                 ion-col{    
                     
-                    &[col-6] {
-                        padding: 0;
+                    &[col-sm-6] {
+                        padding: 0px;
+                        margin:0;
+                        text-align: center;
+                        ion-img{
+                            width: 170px;
+                            height: 100%;
+                            img {
+                                
+                            }
+
+                        }
                     }
                     
                     p{
@@ -25,9 +41,8 @@ page-game {
         }
         ion-img{
             background-color: transparent;
-            &.vidas{
-                min-height: 26px;
-            }
+            height: 100%;
+            
             
         }
         ion-img{
