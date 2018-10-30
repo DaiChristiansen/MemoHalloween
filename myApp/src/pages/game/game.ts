@@ -14,19 +14,31 @@ export class GamePage {
   private interval;
   private cantVidas: number;
   private vidas: number[]=[];
+  private cantCartas: number;
+  private cartas: string[]=[
+    "CartaFrenteCalabazaGrande",
+    "CartaFrenteCalabazaGrande",
+    "CartaFrenteCalabera",
+    "CartaFrenteCalabera",
+    "CartaFrenteFantasma",
+    "CartaFrenteFantasma",
+    "CartaFrenteOlla",
+    "CartaFrenteOlla",
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //contador=50
+    this.cantCartas=8;
   }
-
-  ionViewDidLoad() {
-    }
 
   ionViewWillEnter() {
     this.cantVidas = 3;
+    const aux = this.random(this.cartas);
+    this.cartas = aux;
   }
 
   ionViewDidEnter() {
-    this.startCountdown(10);
+    //this.startCountdown(10);
     this.actualizarArreglo();
   }
   actualizarArreglo(){
@@ -72,10 +84,29 @@ export class GamePage {
         clearInterval(this.interval);
 
         //this.goToLosePage();
-      };
+      }
     }, 1000);
-  };
+  }
+  existePos(pos, arrPos){
+    var esta: boolean;
+    for (let i = 0; i < arrPos.length; i++) {
+      if(arrPos[i] !== pos){
+        esta=true;
+      }   
+    }
+    return esta;
+  }
 
 
-
+  random(arr){
+    let arr2 = new Array(arr.length - 1);
+    for (let i=0;i<arr.length ;i++){
+        let rand = Math.floor((Math.random() * arr.length) );
+        while (arr2[rand] !== undefined ){
+          rand = Math.floor((Math.random() * arr.length) );
+      }
+      arr2[rand] = arr[i];
+    }
+    return arr2;
+  }
 }

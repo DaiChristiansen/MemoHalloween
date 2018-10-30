@@ -15,29 +15,17 @@
         </ion-col>
       </ion-row>
       <ion-row class="cartas">
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png" (click)='goToWinPage()'></ion-img>
-        </ion-col>
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png"></ion-img>
-        </ion-col>
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png"></ion-img>
-        </ion-col>
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png"></ion-img>
-        </ion-col>
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png"></ion-img>
-        </ion-col>
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png"></ion-img>
-        </ion-col>
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png"></ion-img>
-        </ion-col>
-        <ion-col col-sm-6 col-md-3>
-            <ion-img  src="assets/imgs/CartaDorso.png"></ion-img>
+        <ion-col *ngFor="let img of cartas" col-sm-6 col-md-3>
+                <div class="flip-card">
+                        <div class="flip-card-inner">
+                          <div class="flip-card-front">
+                            <img src="assets/imgs/CartaDorso.png" alt="Dorso">
+                          </div>
+                          <div class="flip-card-back">
+                            <img [src]="'assets/imgs/' + img + '.png'" alt="Frente">
+                          </div>
+                        </div>
+                </div>
         </ion-col>
       </ion-row>
       
