@@ -15,8 +15,10 @@
         </ion-col>
       </ion-row>
       <ion-row class="cartas">
-        <ion-col *ngFor="let img of cartas" col-sm-6 col-md-3>
-                <div class="flip-card">
+        <ion-col *ngFor="let img of cartas; let i = index" col-sm-6 col-md-3>
+                <div class="flip-card"
+                [ngClass]="(isClicked(i) >= 0 || sonCorrectas(i) >=0) ? 'clicked' : ''"
+                (click)="clickCard(i)">
                         <div class="flip-card-inner">
                           <div class="flip-card-front">
                             <img src="assets/imgs/CartaDorso.png" alt="Dorso">

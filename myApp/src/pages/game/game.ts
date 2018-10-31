@@ -25,6 +25,8 @@ export class GamePage {
     "CartaFrenteOlla",
     "CartaFrenteOlla",
   ];
+  private clickeadas: number[]=[0,1,2,3,4,5,6,7];
+  private correctas: number[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //contador=50
@@ -38,8 +40,14 @@ export class GamePage {
   }
 
   ionViewDidEnter() {
-    //this.startCountdown(10);
     this.actualizarArreglo();
+    var contador: number = setInterval(() => { 
+      this.startCountdown(20);
+      this.clickeadas.length = 0;
+      clearInterval(contador);
+
+    }, 500);
+    
   }
   actualizarArreglo(){
     this.vidas.length = 0;
@@ -66,24 +74,9 @@ export class GamePage {
 
     this.interval = setInterval(() => {
       this.secondsUntilDead--;
-
-      if(this.secondsUntilDead === 8 || this.secondsUntilDead === 6 || this.secondsUntilDead === 4){
-        //resta una vida
-        if(this.cantVidas === 1){
-          clearInterval(this.interval);
-          this.vidas.length = 0;
-          this.goToLosePage();
-        }else{
-        this.cantVidas--;
-        //this.vidas.pop();
-        this.actualizarArreglo();
-        }
-      }
-
       if(this.secondsUntilDead === 0 ){
         clearInterval(this.interval);
-
-        //this.goToLosePage();
+        this.goToLosePage();
       }
     }, 1000);
   }
@@ -108,5 +101,67 @@ export class GamePage {
       arr2[rand] = arr[i];
     }
     return arr2;
+  }
+
+  clickCard(CardPos: number){
+    var arrayPos = this.isClicked(CardPos);
+    if(arrayPos >= 0){
+      this.clickeadas.splice(arrayPos, 1);
+    } else {
+      if(this.clickeadas.length < 2){
+        this.clickeadas.push(CardPos);
+        if(this.clickeadas.length === 2){
+          if(this.compareCards() === true){
+            this.correctas.push(... this.clickeadas);
+            this.correctasCompletas()
+          } else {
+            this.cantVidas--;
+            this.actualizarArreglo();
+              if(this.cantVidas === 0){
+                setTimeout(() => {
+                  this.vidas.length = 0;
+                  this.goToLosePage();
+                }, 2000);
+               }
+            }
+          setTimeout(() => { 
+            this.clickeadas.length = 0;
+          }, 1000);
+        }
+      } 
+    }
+  }
+
+  correctasCompletas(){
+    if(this.correctas.length === 8){
+      clearInterval(this.interval);
+      setTimeout(() => {
+        this.vidas.length = 0;
+        this.goToWinPage();
+      }, 2000);
+      
+    }
+  }
+
+  compareCards(){
+    var pos1: number = this.clickeadas[0];
+    var pos2: number = this.clickeadas[1];
+    var card1: string = this.cartas[pos1];
+    var card2: string = this.cartas[pos2];
+    return card1 === card2;
+  }
+
+  isClicked(posicion: number){
+    let pos = this.clickeadas.findIndex((value, index, obj )=>{
+      return value === posicion;
+    });
+    return (pos);
+  }
+
+  sonCorrectas(posicion: number){
+    let pos = this.correctas.findIndex((value, index, obj )=>{
+      return value === posicion;
+    });
+    return (pos);
   }
 }

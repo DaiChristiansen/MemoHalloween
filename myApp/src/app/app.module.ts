@@ -11,12 +11,14 @@ import { EndGamePage } from '../pages/end-game/end-game';
 // components
 import { WinMessageComponent } from '../components/win-message/win-message';
 import { LoseMessageComponent } from '../components/lose-message/lose-message';
+import { GamePage } from '../pages/game/game';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     EndGamePage,
+    GamePage,
     WinMessageComponent,
     LoseMessageComponent,
   ],
@@ -29,6 +31,7 @@ import { LoseMessageComponent } from '../components/lose-message/lose-message';
     MyApp,
     HomePage,
     EndGamePage,
+    GamePage,
     WinMessageComponent,
     LoseMessageComponent,
   ],

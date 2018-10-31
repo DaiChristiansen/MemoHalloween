@@ -9,9 +9,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class EndGamePage {
   private isWinner: boolean;
   private imagen: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
   }
+  
   goToLogin() {
     this.navCtrl.popToRoot();
   }
@@ -19,7 +21,9 @@ export class EndGamePage {
   ionViewDidEnter() {
     this.isWinner = this.navParams.get('win');
     if (this.isWinner===true){
-      
-    } 
+      this.imagen = "assets/imgs/Ganaste.png";
+    } else {
+      this.imagen = "assets/imgs/Perdiste.png";
+    }
   }
 }

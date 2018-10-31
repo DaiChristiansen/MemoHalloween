@@ -21,7 +21,7 @@ page-game {
                         perspective: 1000px; /* Remove this if you don't want the 3D effect */
                         height: 100%;
                         /* Do an horizontal flip when you move the mouse over the flip box container */
-                        &:hover .flip-card-inner, &.clicked .flip-card-inner {
+                        /*&:hover .flip-card-inner,*/ &.clicked .flip-card-inner {
                             transform: rotateY(180deg);
                         }
                         /* This container is needed to position the front and back side */

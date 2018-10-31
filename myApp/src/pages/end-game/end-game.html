@@ -1,11 +1,12 @@
 <ion-content padding>
     <ion-grid>
         <ion-row justify-content-center>
-          <ion-img src="assets/imgs/Perdiste.png"></ion-img>
+          <ion-img [src]="imagen"></ion-img>
+          <!-- <ion-img src="assets/imgs/Ganaste.png"></ion-img> -->
         </ion-row>
       </ion-grid>
   <ion-footer>
-    <button block round small ion-button
+    <button block round ion-button
     (click)="goToLogin()">
       CONTINUAR
     </button>
